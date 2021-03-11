@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SSC_TicketModelStoreContainer" CdmEntityContainer="SSC_TicketEntities">
+    <EntitySetMapping Name="Ticket">
+      <EntityTypeMapping TypeName="SSC_TicketModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="Ticket_Title" ColumnName="Ticket_Title" />
+          <ScalarProperty Name="Ticket_Description" ColumnName="Ticket_Description" />
+          <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="Ticket_Admin" ColumnName="Ticket_Admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="SSC_TicketModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="SSC_TicketModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserType1" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ticket_CRUD" FunctionName="SSC_TicketModel.Store.Ticket_CRUD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SSC_TicketModel.Ticket_CRUD_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="Ticket_Title" ColumnName="Ticket_Title" />
+          <ScalarProperty Name="Ticket_Description" ColumnName="Ticket_Description" />
+          <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="Ticket_Admin" ColumnName="Ticket_Admin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ticket_PerformCRUD" FunctionName="SSC_TicketModel.Store.Ticket_CRUD" />
+    <FunctionImportMapping FunctionImportName="UserTicket_CRUD" FunctionName="SSC_TicketModel.Store.UserTicket_CRUD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SSC_TicketModel.UserTicket_CRUD_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="Ticket_Title" ColumnName="Ticket_Title" />
+          <ScalarProperty Name="Ticket_Description" ColumnName="Ticket_Description" />
+          <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserTicket_PerformCRUD" FunctionName="SSC_TicketModel.Store.UserTicket_CRUD" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SSC_Ticket_Management.Models.NameUserTicket>
+    @{
+        ViewBag.Title = "Ticket";
+    }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- Container -->
+        <div class="container text-left">
+            <div class="row content">
+
+                <div class="col-sm-12">
+                    <h2>Ticket List</h2>
+                    <hr />
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ticket ID</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <th scope="row"> @Html.DisplayFor(modelItem => item.Ticket.Ticket_ID)</th>
+                                    <td> @Html.DisplayFor(modelItem => item.Ticket.Ticket_Title)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Ticket.Ticket_Description)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.Ticket.Ticket_Status)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.User.Name)</td>
+                                    <td>
+                                        <a href="@Url.Action("Approve", "Admin", new { id = item.Ticket.Ticket_ID })" class="btn btn-warning">Approve</a>
+                                        |
+                                        <a href="@Url.Action("Reject", "Admin", new { id = item.Ticket.Ticket_ID })" class="btn btn-danger">Reject</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                                }
+
+                        </table>
+
+                    </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>
+

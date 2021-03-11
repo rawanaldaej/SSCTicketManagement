@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SSC_TicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="A_usernama" />
+    </Key>
+    <Property Name="A_usernama" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="A_password" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="E_username" />
+    </Key>
+    <Property Name="E_username" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="E_password" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Ticket_ID" />
+    </Key>
+    <Property Name="Ticket_ID" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Ticket_Title" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Ticket_Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Ticket_Status" Type="char" MaxLength="10" />
+    <Property Name="CREATED_BY" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ADMIN" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Ticket_CREATED_BY">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="E_username" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="CREATED_BY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Manage_By">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="A_usernama" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="ADMIN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SSC_TicketModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ticket_CREATED_BY" Association="Self.FK_Ticket_CREATED_BY">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Manage_By" Association="Self.FK_Ticket_Manage_By">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

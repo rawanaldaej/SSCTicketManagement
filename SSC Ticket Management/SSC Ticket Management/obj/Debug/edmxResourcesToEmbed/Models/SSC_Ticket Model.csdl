@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SSC_TicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Ticket_ID" />
+    </Key>
+    <Property Name="Ticket_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ticket_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ticket_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ticket_Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ticket_Admin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Ticket_Ticket" FromRole="Ticket" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Ticket" FromRole="User" ToRole="Ticket" />
+    <NavigationProperty Name="UserType" Relationship="Self.FK_User_Type" FromRole="User" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="UserType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Type" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Ticket_Ticket">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="CREATED_BY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Type">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SSC_TicketEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" />
+    <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
+      <End Role="User" EntitySet="User" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Type" Association="Self.FK_User_Type">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <FunctionImport Name="Ticket_CRUD" ReturnType="Collection(SSC_TicketModel.Ticket_CRUD_Result)">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+      <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ticket_PerformCRUD" EntitySet="Ticket" ReturnType="Collection(SSC_TicketModel.Ticket)">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+      <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserTicket_CRUD" ReturnType="Collection(SSC_TicketModel.UserTicket_CRUD_Result)">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+      <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserTicket_PerformCRUD" EntitySet="Ticket" ReturnType="Collection(SSC_TicketModel.Ticket)">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+      <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+      <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Ticket_CRUD_Result">
+    <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+    <Property Type="String" Name="Ticket_Title" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Ticket_Description" Nullable="false" />
+    <Property Type="String" Name="Ticket_Status" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="Ticket_Admin" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserTicket_CRUD_Result">
+    <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+    <Property Type="String" Name="Ticket_Title" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Ticket_Description" Nullable="false" />
+    <Property Type="String" Name="Ticket_Status" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="150" />
+  </ComplexType>
+</Schema>

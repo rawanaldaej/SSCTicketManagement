@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SSC_TicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Ticket_ID" />
+    </Key>
+    <Property Name="Ticket_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ticket_Title" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Ticket_Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Ticket_Status" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="CREATED_BY" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Ticket_Admin" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Ticket_Ticket">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="CREATED_BY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Type">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Ticket_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+    <Parameter Name="Ticket_Title" Type="varchar" Mode="In" />
+    <Parameter Name="Ticket_Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Ticket_Status" Type="char" Mode="In" />
+    <Parameter Name="CREATED_BY" Type="varchar" Mode="In" />
+    <Parameter Name="Ticket_Admin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserTicket_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+    <Parameter Name="Ticket_Title" Type="varchar" Mode="In" />
+    <Parameter Name="Ticket_Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Ticket_Status" Type="char" Mode="In" />
+    <Parameter Name="CREATED_BY" Type="varchar" Mode="In" />
+    <Parameter Name="Ticket_Admin" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SSC_TicketModelStoreContainer">
+    <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
+      <End Role="User" EntitySet="User" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Type" Association="Self.FK_User_Type">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

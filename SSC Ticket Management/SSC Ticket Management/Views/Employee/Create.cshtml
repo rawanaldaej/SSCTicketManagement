@@ -1,0 +1,85 @@
+﻿@model SSC_Ticket_Management.Models.Ticket
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .table-borderless > tbody > tr > td,
+        .table-borderless > tbody > tr > th,
+        .table-borderless > tfoot > tr > td,
+        .table-borderless > tfoot > tr > th,
+        .table-borderless > thead > tr > td,
+        .table-borderless > thead > tr > th {
+            border: none !important;
+            text-align: left;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container text-left">
+        <div class="row content">
+
+            <div class="col-sm-12">
+                <br />
+                <h2>Create New Ticket</h2>
+
+                <hr />
+
+                <br />
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <table class="table table-borderless table-hover">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <tbody>
+                            <tr>
+                                <th scope="row">Title</th>
+                                <td>
+                                    @Html.EditorFor(model => model.Ticket_Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Ticket_Title, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Description</th>
+                                <td>
+                                    @Html.EditorFor(model => model.Ticket_Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Ticket_Description, "", new { @class = "text-danger" })
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="form-group ">
+
+                        <input type="submit" value="Create" class="btn btn-success" />
+                        |
+                        <a href="@Url.Action("index", "Employee")" class="btn btn-default">Back to List</a>
+                    </div>
+
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

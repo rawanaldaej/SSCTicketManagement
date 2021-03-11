@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SSC_TicketModelStoreContainer" CdmEntityContainer="SSC_TicketEntities">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="SSC_TicketModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="A_usernama" ColumnName="A_usernama" />
+          <ScalarProperty Name="A_password" ColumnName="A_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="SSC_TicketModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="E_username" ColumnName="E_username" />
+          <ScalarProperty Name="E_password" ColumnName="E_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket">
+      <EntityTypeMapping TypeName="SSC_TicketModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="Ticket_Title" ColumnName="Ticket_Title" />
+          <ScalarProperty Name="Ticket_Description" ColumnName="Ticket_Description" />
+          <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ADMIN" ColumnName="ADMIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

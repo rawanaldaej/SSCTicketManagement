@@ -1,0 +1,83 @@
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\SSC Ticket Management.dll.config
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\SSC Ticket Management.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\SSC Ticket Management.pdb
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\csc.exe
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\csc.exe.config
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\csc.rsp
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\csi.exe
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\csi.exe.config
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\csi.rsp
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.AppContext.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Console.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.IO.Compression.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Net.Http.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Net.Sockets.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.ValueTuple.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Xml.XPath.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\vbc.exe
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\vbc.exe.config
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\vbc.rsp
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\VBCSCompiler.exe
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\EntityFramework.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\EntityFramework.SqlServer.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Helpers.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Mvc.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Razor.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Webpages.Deployment.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Webpages.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Webpages.Razor.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\EntityFramework.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\EntityFramework.SqlServer.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Razor.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Webpages.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Webpages.Deployment.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Webpages.Razor.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Helpers.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Mvc.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\obj\Debug\SSC Ticket Management.csproj.CoreCompileInputs.cache
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\obj\Debug\SSC Ticket Management.csproj.CopyComplete
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\obj\Debug\SSC Ticket Management.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\obj\Debug\SSC Ticket Management.pdb
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\obj\Debug\SSC Ticket Management.csprojAssemblyReference.cache
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\Antlr3.Runtime.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\Newtonsoft.Json.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Optimization.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\WebGrease.dll
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\Antlr3.Runtime.pdb
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\Newtonsoft.Json.xml
+C:\Users\sy\Desktop\ssc1\SSC Ticket Management\SSC Ticket Management\bin\System.Web.Optimization.xml

@@ -1,0 +1,86 @@
+﻿@model SSC_Ticket_Management.Models.Ticket
+
+@{
+    ViewBag.Title = "Reject";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .table-borderless > tbody > tr > td,
+        .table-borderless > tbody > tr > th,
+        .table-borderless > tfoot > tr > td,
+        .table-borderless > tfoot > tr > th,
+        .table-borderless > thead > tr > td,
+        .table-borderless > thead > tr > th {
+            border: none !important;
+            text-align:left;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container text-left">
+        <div class="row content">
+
+            <div class="col-sm-12">
+                <h2>Reject Ticket</h2>
+
+                <hr />
+                <table class="table table-borderless table-hover">
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">Ticket ID</th>
+                            <td>@Html.DisplayFor(model => model.Ticket_ID)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>@Html.DisplayFor(model => model.Ticket_Title)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>@Html.DisplayFor(model => model.Ticket_Description)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td>@Html.DisplayFor(model => model.Ticket_Status)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Created by</th>
+                            <td>@Html.DisplayFor(model => model.User.UserName)</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <h3 style="color:red">Are you sure you want to Reject this ticket?</h3>
+                    <br />
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Reject" class="btn btn-danger">
+                        |
+
+                        <a href="@Url.Action("index", "Admin")" class="btn btn-default">Back to List</a>
+
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+

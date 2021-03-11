@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SSC_Ticket_Management.Models.Ticket>
+
+
+
+@{
+    ViewBag.Title = "Ticket";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Container -->
+    <div class="container text-left">
+        <br>
+        <div class="row content">
+
+            <div class="col-sm-12">
+                <h2>Ticket List</h2>
+                <hr />
+                @{ WebGrid Ticket = new WebGrid(source: Model, rowsPerPage: 10); }
+
+                @Ticket.GetHtml(
+                    tableStyle: "table",
+                    htmlAttributes: new { @Ticket_ID = "Ticket" },
+                    columns: Ticket.Columns(
+                        Ticket.Column("Ticket_ID", "ID"),
+                        Ticket.Column("Ticket_Title", "Title"),
+                        Ticket.Column("Ticket_Description", "Description"),
+                        Ticket.Column("Ticket_Status", "Status"),
+                        Ticket.Column("CREATED_BY", "Created by"),
+                        Ticket.Column(header: "Action", format:@<span>
+                                <a href="@Url.Action("Approve", "Admin", new { id = item.Ticket_ID })" class="btn btn-warning">Approve</a>
+                                |
+                                <a href="@Url.Action("Reject", "Admin", new { id = item.Ticket_ID })" class="btn btn-danger">Reject</a>
+                                @*<a href="@Url.Action("Details", "Admin", new { item.Ticket_ID })" class="btn btn-warning">Details</a>*@
+                            </span>
+)
+)
+)
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+

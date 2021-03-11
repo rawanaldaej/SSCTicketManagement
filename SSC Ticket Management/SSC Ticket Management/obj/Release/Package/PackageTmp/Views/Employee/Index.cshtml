@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SSC_Ticket_Management.Models.Ticket>
+
+@{
+    ViewBag.Title = "Ticket";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid text-left">
+        <div class="row content">
+
+            <div class="col-sm-12">
+                <h2>Ticket List</h2>
+                <hr />
+                <p>
+                <p style="padding-bottom:43px">
+                    <a href="@Url.Action("Create", "Employee")" class="btn btn-success" style="float:right;">Create New Ticket</a>
+
+                </p>
+                
+                </p>
+
+                @{ WebGrid Ticket = new WebGrid(source: Model, rowsPerPage: 10); }
+
+                @Ticket.GetHtml(
+                    tableStyle: "table",
+                    htmlAttributes: new { @Ticket_ID = "Ticket" },
+                    columns: Ticket.Columns(
+                        Ticket.Column("Ticket_ID", "ID"),
+                        Ticket.Column("Ticket_Title", "Title"),
+                        Ticket.Column("Ticket_Description", "Description"),
+                        Ticket.Column("Ticket_Status", "Status")
+)
+)
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

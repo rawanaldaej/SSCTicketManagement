@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SSC_TicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Ticket_ID" />
+          </Key>
+          <Property Name="Ticket_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ticket_Title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Ticket_Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Ticket_Status" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="CREATED_BY" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Ticket_Admin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ticket_Ticket">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="CREATED_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Type">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Ticket_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+          <Parameter Name="Ticket_Title" Type="varchar" Mode="In" />
+          <Parameter Name="Ticket_Description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Ticket_Status" Type="char" Mode="In" />
+          <Parameter Name="CREATED_BY" Type="varchar" Mode="In" />
+          <Parameter Name="Ticket_Admin" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UserTicket_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+          <Parameter Name="Ticket_Title" Type="varchar" Mode="In" />
+          <Parameter Name="Ticket_Description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Ticket_Status" Type="char" Mode="In" />
+          <Parameter Name="CREATED_BY" Type="varchar" Mode="In" />
+          <Parameter Name="Ticket_Admin" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SSC_TicketModelStoreContainer">
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
+            <End Role="User" EntitySet="User" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Type" Association="Self.FK_User_Type">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SSC_TicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Ticket_ID" />
+          </Key>
+          <Property Name="Ticket_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ticket_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ticket_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ticket_Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ticket_Admin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Ticket_Ticket" FromRole="Ticket" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Ticket" FromRole="User" ToRole="Ticket" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_User_Type" FromRole="User" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Type" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Ticket_Ticket">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="CREATED_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Type">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SSC_TicketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" />
+          <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
+            <End Role="User" EntitySet="User" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Type" Association="Self.FK_User_Type">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <FunctionImport Name="Ticket_CRUD" ReturnType="Collection(SSC_TicketModel.Ticket_CRUD_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+            <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Ticket_PerformCRUD" EntitySet="Ticket" ReturnType="Collection(SSC_TicketModel.Ticket)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+            <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserTicket_CRUD" ReturnType="Collection(SSC_TicketModel.UserTicket_CRUD_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+            <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserTicket_PerformCRUD" EntitySet="Ticket" ReturnType="Collection(SSC_TicketModel.Ticket)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Ticket_Title" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Description" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Status" Mode="In" Type="String" />
+            <Parameter Name="CREATED_BY" Mode="In" Type="String" />
+            <Parameter Name="Ticket_Admin" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Ticket_CRUD_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="Ticket_Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Ticket_Description" Nullable="false" />
+          <Property Type="String" Name="Ticket_Status" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="Ticket_Admin" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UserTicket_CRUD_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="Ticket_Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Ticket_Description" Nullable="false" />
+          <Property Type="String" Name="Ticket_Status" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="150" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SSC_TicketModelStoreContainer" CdmEntityContainer="SSC_TicketEntities">
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="SSC_TicketModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="Ticket_Title" ColumnName="Ticket_Title" />
+                <ScalarProperty Name="Ticket_Description" ColumnName="Ticket_Description" />
+                <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="Ticket_Admin" ColumnName="Ticket_Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SSC_TicketModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserType">
+            <EntityTypeMapping TypeName="SSC_TicketModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserType1" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Ticket_CRUD" FunctionName="SSC_TicketModel.Store.Ticket_CRUD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SSC_TicketModel.Ticket_CRUD_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="Ticket_Title" ColumnName="Ticket_Title" />
+                <ScalarProperty Name="Ticket_Description" ColumnName="Ticket_Description" />
+                <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="Ticket_Admin" ColumnName="Ticket_Admin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ticket_PerformCRUD" FunctionName="SSC_TicketModel.Store.Ticket_CRUD" />
+          <FunctionImportMapping FunctionImportName="UserTicket_CRUD" FunctionName="SSC_TicketModel.Store.UserTicket_CRUD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SSC_TicketModel.UserTicket_CRUD_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="Ticket_Title" ColumnName="Ticket_Title" />
+                <ScalarProperty Name="Ticket_Description" ColumnName="Ticket_Description" />
+                <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UserTicket_PerformCRUD" FunctionName="SSC_TicketModel.Store.UserTicket_CRUD" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
